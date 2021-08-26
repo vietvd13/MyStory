@@ -1,0 +1,41 @@
+﻿@model MyStory.Models.Story
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Story</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DoCreate" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TheDescription" class="control-label"></label>
+                <input asp-for="TheDescription" class="form-control" />
+                <span asp-validation-for="TheDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="postedFile" id="myFile">
+                    <label class="input-group-text" for="myFile">Upload</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
